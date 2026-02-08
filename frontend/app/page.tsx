@@ -18,7 +18,8 @@ export default function Home() {
     setInput('');
 
     try {
-      const response = await axios.post(`http://localhost:8000/api/${userId}/chat`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await axios.post(`${apiUrl}/api/${userId}/chat`, {
         message: input,
         conversation_id: conversationId,
       }, {
